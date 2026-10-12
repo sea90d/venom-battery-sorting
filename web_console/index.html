@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>UR5 多色电池分拣｜比赛控制台</title>
+  <style>
+    :root { color-scheme: dark; --bg:#071018; --panel:#101d27; --line:#29404e;
+      --cyan:#5ce1e6; --green:#71e39a; --red:#ff6b70; --amber:#ffc857; --muted:#8ea2af; }
+    * { box-sizing:border-box; }
+    body { margin:0; height:100vh; overflow:hidden; background:radial-gradient(circle at 15% 0,#153242 0,#071018 42%);
+      color:#f5fbff; font-family:"Microsoft YaHei UI","Microsoft YaHei",sans-serif; }
+    .shell { height:100vh; display:grid; grid-template-rows:80px 1fr 46px; gap:14px; padding:18px 22px 12px; }
+    header { display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
+    .brand { display:flex; gap:16px; align-items:center; }
+    .mark { width:48px; height:48px; border:2px solid var(--cyan); border-radius:14px; display:grid; place-items:center;
+      color:var(--cyan); font:bold 20px Consolas; box-shadow:0 0 24px #5ce1e633; }
+    h1 { margin:0; font-size:25px; letter-spacing:1px; } .sub { color:var(--muted); font-size:13px; margin-top:5px; }
+    .clock { text-align:right; font:600 17px Consolas; color:#dcebf3; }
+    main { min-height:0; display:grid; grid-template-columns:minmax(620px,1.65fr) minmax(390px,.75fr); gap:18px; }
+    .panel { background:linear-gradient(145deg,#12232eeb,#0c171feb); border:1px solid var(--line); border-radius:18px;
+      box-shadow:0 16px 44px #0007; overflow:hidden; }
+    .vision { position:relative; min-height:0; display:grid; place-items:center; background:#020506; }
+    video,canvas { width:100%; height:100%; object-fit:contain; background:#020506; }
+    canvas { display:none; }
+    .no-video { position:absolute; text-align:center; color:var(--muted); line-height:1.8; pointer-events:none; }
+    .camera-bar { position:absolute; left:16px; right:16px; top:14px; display:flex; gap:8px; align-items:center; }
+    .tag { border:1px solid #ffffff33; border-radius:99px; padding:7px 11px; background:#071018c9; font-size:13px; }
+    .live-dot { display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--red); margin-right:7px;
+      box-shadow:0 0 10px var(--red); }
+    select,button { font:inherit; color:inherit; }
+    select { max-width:300px; background:#071018dc; border:1px solid #ffffff33; border-radius:9px; padding:7px 10px; }
+    .camera-action { margin-left:auto; background:#183340dc; border:1px solid #4b6d7d; border-radius:9px; padding:8px 12px; cursor:pointer; }
+    .framing { position:absolute; left:16px; right:16px; bottom:14px; display:flex; justify-content:space-between; gap:10px;
+      font-size:13px; color:#e8f4f9; background:#071018d9; border:1px solid #ffffff26; border-radius:11px; padding:10px 13px; }
+    .side { padding:20px; display:flex; flex-direction:column; gap:14px; }
+    .task { border-left:4px solid var(--cyan); padding:2px 0 2px 13px; }
+    .task small { color:var(--muted); } .task strong { display:block; font-size:22px; margin-top:5px; }
+    #taskSelect { max-width:none; width:100%; }
+    #batteryProgress { color:#c7d5dc; font-size:13px; line-height:1.7; white-space:pre-line; }
+    .timer-card { text-align:center; padding:18px 10px; border:1px solid #365364; background:#08131b; border-radius:14px; }
+    .timer-label { color:var(--muted); letter-spacing:3px; font-size:12px; }
+    #timer { margin:8px 0 2px; font:700 clamp(46px,5.1vw,78px)/1 Consolas,monospace; color:var(--cyan); letter-spacing:-3px; }
+    #timerNote { color:#b9c9d1; font-size:13px; }
+    .status { display:flex; align-items:center; gap:10px; padding:12px 13px; border-radius:11px; background:#1a2b35; border:1px solid #304753; }
+    .status-dot { width:11px; height:11px; flex:none; border-radius:50%; background:var(--muted); }
+    .status.running .status-dot,.status.preparing .status-dot,.status.verifying .status-dot { background:var(--amber); animation:pulse 1s infinite; }
+    .status.success .status-dot { background:var(--green); } .status.failed .status-dot { background:var(--red); }
+    @keyframes pulse { 50% { opacity:.28; } }
+    .checks { display:grid; gap:8px; color:#c7d5dc; font-size:14px; }
+    .checks label { display:flex; align-items:flex-start; gap:9px; } input { margin-top:3px; accent-color:var(--cyan); }
+    .warn { min-height:32px; color:var(--amber); font-size:13px; line-height:1.5; }
+    .start { margin-top:auto; border:0; border-radius:13px; padding:16px; font-size:20px; font-weight:700; letter-spacing:2px;
+      background:linear-gradient(90deg,#20b8be,#43d68a); color:#031113; cursor:pointer; box-shadow:0 10px 25px #20b8be33; }
+    .start:disabled { cursor:not-allowed; filter:grayscale(1); opacity:.38; box-shadow:none; }
+    .run-meta { min-height:18px; color:var(--muted); font:12px Consolas; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    footer { display:flex; justify-content:space-between; align-items:center; color:#9fb1bb; font-size:13px; }
+    footer b { color:#dce8ee; }
+    @media(max-width:1050px) { main{grid-template-columns:1.25fr .8fr}.shell{padding:12px;gap:10px} }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header>
+    <div class="brand"><div class="mark">UR5</div><div><h1>机械臂多色电池识别与摆放</h1><div class="sub">2026 美团低空经济与具身智能挑战赛 · 初赛任务控制台</div></div></div>
+    <div class="clock"><div id="dateNow"></div><div id="timeNow"></div></div>
+  </header>
+  <main>
+    <section class="panel vision">
+      <video id="overview" autoplay muted playsinline></video>
+      <canvas id="frozenFrame"></canvas>
+      <div class="no-video" id="noVideo"><b>尚未开启相机画面</b><br>调试阶段可选择末端 D455；正式录像建议使用独立全景相机</div>
+      <div class="camera-bar">
+        <span class="tag"><i class="live-dot"></i>连续实时画面</span>
+        <select id="cameraSelect" aria-label="录像相机"><option value="">等待相机授权</option></select>
+        <button class="camera-action" id="cameraButton">开启相机画面</button>
+      </div>
+      <div class="framing"><span>构图检查：机械臂整体 · 工作台与任务底图 · 全部电池</span><span>固定机位 / 原速连续</span></div>
+    </section>
+    <aside class="panel side">
+      <select id="taskSelect" aria-label="选择比赛任务"><option value="basic">第一题：红色 → T0</option><option value="sequence">第二题现场测试：黄→P1、绿→P2、蓝→P3</option></select>
+      <div class="task"><small id="taskLabel">当前任务 / TASK 1</small><strong id="taskTitle">抓取红色电池放入 T0</strong></div>
+      <div class="timer-card"><div class="timer-label">自动任务计时</div><div id="timer">00:00.000</div><div id="timerNote">整体展开开始计时，折回 Home 后显示运行时间</div></div>
+      <div class="status idle" id="statusBox"><span class="status-dot"></span><div><b id="stateText">待机</b><div id="phaseText">等待开始</div></div></div>
+      <div id="batteryProgress" hidden></div>
+      <div class="checks">
+        <label><input type="checkbox" id="sceneCheck"><span id="sceneCheckLabel">当前相机画面已看清任务底图、目标区和电池</span></label>
+        <label><input type="checkbox" id="safetyCheck">机器人周围无人员和障碍，线缆无牵扯，急停可用</label>
+      </div>
+      <div class="warn" id="warning">使用丝滑程序速度：搬运 500 mm/s，加速度 1.0 m/s²。</div>
+      <button class="start" id="startButton" disabled>开始任务并自动计时</button>
+      <div class="run-meta" id="runMeta">运行记录：尚未开始</div>
+    </aside>
+  </main>
+  <footer><span><b>录像要求提示：</b>末端相机仅供临时调试；正式提交仍需拍到机械臂整体、底图和全部电池。</span><span id="profileLabel">丝滑速度：500 mm/s · 1.0 m/s²</span></footer>
+</div>
+<script>
+  const el=id=>document.getElementById(id);
+  let stream=null, cameraReady=false, robotCamera=false, starting=false, latest={state:'idle',elapsed_s:0};
+  el('taskSelect').value=new URLSearchParams(location.search).get('task')==='sequence'?'sequence':'basic';
+  const selectedTask=()=>el('taskSelect').value;
+  const busy=()=>['preparing','running','verifying'].includes(latest.state);
+  function taskDescription(){return selectedTask()==='sequence'?'第二题固定点连续运动：按示教位置摆放黄、绿、蓝和图纸，直接执行黄→P1、绿→P2、蓝→P3；不采图、不复检。':'使用丝滑程序速度：搬运 500 mm/s，加速度 1.0 m/s²。';}
+  function renderTask(){
+    const sequence=selectedTask()==='sequence';
+    el('taskLabel').textContent=sequence?'当前任务 / TASK 2 · 现场测试':'当前任务 / TASK 1';
+    el('taskTitle').textContent=sequence?'黄→P1 · 绿→P2 · 蓝→P3':'抓取红色电池放入 T0';
+    el('sceneCheckLabel').textContent=sequence?'图纸及黄、绿、蓝电池已按固定示教位置摆放':'当前相机画面已看清任务底图、目标区和电池';
+    el('profileLabel').textContent=sequence?'第二题30秒目标：500 mm/s · 1.0 m/s² · 固定点连续抓放 · 无视觉/轨迹预检 · 搬运高度169.207 mm':'丝滑速度：500 mm/s · 1.0 m/s²';
+    el('startButton').textContent=sequence?'开始第二题固定点流程并计时':'开始任务并自动计时';
+    el('batteryProgress').hidden=!sequence;
+    const records=latest.task===selectedTask()?(latest.battery_run_times||[]):[];
+    el('batteryProgress').textContent=[['yellow','黄','P1'],['green','绿','P2'],['blue','蓝','P3']].map(([color,name,target])=>{
+      const record=records.find(item=>item.color===color);
+      return `${name} → ${target}：${record?'完成 '+Number(record.run_time_s).toFixed(3)+' 秒':'待执行'}`;
+    }).join('\n');
+  }
+  el('taskSelect').onchange=()=>{renderTask();el('warning').textContent=taskDescription();updateButton();};
+  renderTask();el('warning').textContent=taskDescription();
+  const labels={idle:'待机',preparing:'准备中',running:'计时中',verifying:'复检中',success:'任务成功',failed:'任务失败'};
+  function formatTime(seconds){
+    const ms=Math.max(0,Math.floor(seconds*1000)), m=Math.floor(ms/60000), s=Math.floor(ms/1000)%60;
+    return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+'.'+String(ms%1000).padStart(3,'0');
+  }
+  function renderedElapsed(){
+    if(latest.task&&latest.task!==selectedTask())return 0;
+    if(latest.pick_run_time_s!=null)return Number(latest.pick_run_time_s);
+    if(latest.cycle_started_at!=null&&latest.ended_at==null){
+      return Math.max(0,Date.now()/1000-Number(latest.cycle_started_at));
+    }
+    return Number(latest.elapsed_s||0);
+  }
+  function animateTimer(){
+    el('timer').textContent=formatTime(renderedElapsed());
+    requestAnimationFrame(animateTimer);
+  }
+  requestAnimationFrame(animateTimer);
+  function tickClock(){const d=new Date();el('dateNow').textContent=d.toLocaleDateString('zh-CN');el('timeNow').textContent=d.toLocaleTimeString('zh-CN',{hour12:false});}
+  setInterval(tickClock,250);tickClock();
+  function updateButton(){
+    const idle=['idle','success','failed'].includes(latest.state);
+    const supported=(latest.available_tasks||[]).includes(selectedTask());
+    el('startButton').disabled=!(supported&&idle&&!starting&&(selectedTask()==='sequence'||cameraReady)&&el('sceneCheck').checked&&el('safetyCheck').checked);
+    el('taskSelect').disabled=starting||busy();
+  }
+  async function enumerateCameras(){
+    const devices=(await navigator.mediaDevices.enumerateDevices()).filter(d=>d.kind==='videoinput');
+    const old=el('cameraSelect').value;el('cameraSelect').innerHTML='';
+    devices.forEach((d,i)=>{const o=document.createElement('option');o.value=d.deviceId;o.textContent=d.label||`相机 ${i+1}`;el('cameraSelect').appendChild(o);});
+    if(devices.some(d=>d.deviceId===old))el('cameraSelect').value=old;
+  }
+  function selectedCameraLabel(){return el('cameraSelect').selectedOptions[0]?.textContent||'';}
+  function isRobotCameraLabel(label){return /RealSense|Depth Camera|D455/i.test(label);}
+  async function startCamera(){
+    try{
+      if(stream)stream.getTracks().forEach(t=>t.stop());
+      const id=el('cameraSelect').value;
+      stream=await navigator.mediaDevices.getUserMedia({video:id?{deviceId:{exact:id},width:{ideal:1920},height:{ideal:1080}}:{width:{ideal:1920},height:{ideal:1080}},audio:false});
+      el('overview').style.display='block';el('frozenFrame').style.display='none';
+      el('overview').srcObject=stream;await el('overview').play();await enumerateCameras();
+      cameraReady=true;robotCamera=isRobotCameraLabel(selectedCameraLabel());el('noVideo').style.display='none';
+      el('warning').textContent=robotCamera?'末端 D455 调试模式：开始时会冻结画面并把相机交给识别程序；该视角不满足最终全景录像要求。':taskDescription();
+    }catch(err){cameraReady=false;el('warning').textContent='无法开启相机：'+err.message;}
+    updateButton();
+  }
+  el('cameraButton').onclick=startCamera;el('cameraSelect').onchange=startCamera;
+  el('sceneCheck').onchange=updateButton;el('safetyCheck').onchange=updateButton;
+  async function handOffRobotCamera(){
+    if(!robotCamera||!stream)return;
+    const video=el('overview'),canvas=el('frozenFrame');
+    canvas.width=video.videoWidth||1280;canvas.height=video.videoHeight||720;
+    canvas.getContext('2d').drawImage(video,0,0,canvas.width,canvas.height);
+    canvas.style.display='block';video.style.display='none';
+    stream.getTracks().forEach(t=>t.stop());stream=null;cameraReady=false;
+    await new Promise(resolve=>setTimeout(resolve,500));
+  }
+  el('startButton').onclick=async()=>{
+    if(starting||busy())return;
+    if(!(latest.available_tasks||[]).includes(selectedTask())){el('warning').textContent='请打开更新后的图像控制台：http://127.0.0.1:8767/';return;}
+    starting=true;
+    const task=selectedTask();
+    el('startButton').disabled=true;el('warning').textContent='正在提交启动请求……';
+    el('taskSelect').disabled=true;
+    try{
+      if(task!=='sequence')await handOffRobotCamera();
+      const r=await fetch('/api/start',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({task})});const body=await r.json();
+      if(!r.ok)throw new Error(body.error||'启动失败');latest=body;el('warning').textContent=task==='sequence'?'固定点模式：已取消耗时轨迹检查；展开至折回计时，实际耗时以结果为准。':(robotCamera?'末端相机已交给识别程序；界面保留启动前最后一帧。计时从整体展开开始。':'程序正在准备；计时从整体展开开始。');
+    }catch(err){el('warning').textContent=err.message;}finally{starting=false;updateButton();}
+  };
+  async function poll(){
+    try{
+      const r=await fetch('/api/status',{cache:'no-store'});if(!r.ok)return;latest=await r.json();
+      if(busy()&&latest.task)el('taskSelect').value=latest.task;
+      renderTask();
+      const current=latest.task===selectedTask()?latest:{state:'idle',phase:'等待开始'};
+      el('statusBox').className='status '+current.state;el('stateText').textContent=labels[current.state]||current.state;el('phaseText').textContent=current.phase;
+      el('timerNote').textContent=selectedTask()==='sequence'?'整题运行时间：展开 → 固定点三块抓放 → 折回（不含设备及轨迹准备）':current.pick_run_time_s!=null?'夹取运行时间（整体展开 → 识别抓放及复检 → 折回 Home）':(current.cycle_started_at?'比赛动作及识别计时中 · 实时滚动':'整体展开开始计时，折回 Home 后显示运行时间');
+      el('runMeta').textContent=latest.output_dir?'运行记录：'+latest.output_dir:'运行记录：尚未开始';
+      if(current.state==='failed')el('warning').textContent='失败原因：'+(current.error||'请查看运行记录');
+      if(current.state==='success')el('warning').textContent='任务完成，结果画面与计时已锁定。';
+      if(!latest.available_tasks)el('warning').textContent='这是旧服务，请打开更新后的图像控制台：http://127.0.0.1:8767/';
+      updateButton();
+    }catch(_err){}
+  }
+  setInterval(poll,100);poll();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "robot": {
+    "host": "192.168.1.10",
+    "dashboard_port": 29999,
+    "rtde_port": 30004
+  },
+  "gripper": {
+    "driver": "ag105145_modbus",
+    "port": "COM11"
+  },
+  "calibration": {
+    "handeye_result": "output/handeye/session_20260910/handeye_result.json"
+  },
+  "geometry": {
+    "pick_contact_z_m": 0.069207,
+    "safe_high_z_m": 0.447856,
+    "final_slow_distance_m": 0.01,
+    "tool_rotation_vector_rad": [
+      -2.2448617460523574,
+      -2.1864166279658708,
+      0.00325035854435066
+    ],
+    "home_pose_m_rad": [
+      -0.22092979378918567,
+      -0.11446903041580188,
+      0.447856,
+      2.2145206078596114,
+      2.215460314200717,
+      -0.00665696804160864
+    ],
+    "placement_contact_z_m": 0.069207,
+    "workspace_bounds_m": [
+      -0.4,
+      -0.18,
+      -0.25,
+      0.18,
+      0.068,
+      0.451
+    ],
+    "target_centers_base_xy_m": {
+      "T0": null,
+      "P1": null,
+      "P2": null,
+      "P3": null
+    }
+  },
+  "timing": {
+    "grip_settle_s": 0.5,
+    "lifted_hold_s": 2.1,
+    "release_settle_s": 3.1
+  },
+  "verification": {
+    "gripper_live_verified": true,
+    "hover_verified_by_color": {
+      "red": false,
+      "yellow": false,
+      "blue": false,
+      "green": true
+    },
+    "full_cycle_live_verified": false
+  }
+}

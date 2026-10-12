@@ -1,0 +1,45 @@
+{
+  "assets": {
+    "battery_view.png": "output/latest_analysis_20261012_v2/annotated.png",
+    "target_view.png": "output/competition_console/20261012_172952/target_view_1.png",
+    "handeye_sample.png": "output/handeye/session_20260910/images/sample_026_corners.png",
+    "t0_result.png": "output/smooth_t0/20261011_221746/verification/colour.png"
+  },
+  "runs": [
+    {
+      "path": "output/fixed_sequence/20261012_190249_0f229fcf",
+      "seconds": 38.17200000000048,
+      "complete": true,
+      "placement_verified": false,
+      "skip_checks": false
+    },
+    {
+      "path": "output/fixed_sequence/20261012_190530_23df6fc1",
+      "seconds": 38.48400000000038,
+      "complete": true,
+      "placement_verified": false,
+      "skip_checks": false
+    },
+    {
+      "path": "output/competition_console/20261012_190934",
+      "seconds": 38.25,
+      "complete": true,
+      "placement_verified": false,
+      "skip_checks": false
+    },
+    {
+      "path": "output/competition_console/20261012_191432",
+      "seconds": 38.5,
+      "complete": true,
+      "placement_verified": false,
+      "skip_checks": true
+    },
+    {
+      "path": "output/competition_console/20261012_191801",
+      "seconds": 37.84399999999914,
+      "complete": true,
+      "placement_verified": false,
+      "skip_checks": true
+    }
+  ]
+}

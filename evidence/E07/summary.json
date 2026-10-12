@@ -1,0 +1,41 @@
+{
+  "completed": true,
+  "task": "sequence",
+  "mode": "fixed_sequence_open_loop",
+  "vision_enabled": false,
+  "placement_verified": false,
+  "timing": {
+    "task_run_time_s": 38.5,
+    "battery_run_times": [
+      {
+        "color": "yellow",
+        "target": "P1",
+        "run_time_s": 8.67200000000048,
+        "placement_verified": false
+      },
+      {
+        "color": "green",
+        "target": "P2",
+        "run_time_s": 10.546000000000276,
+        "placement_verified": false
+      },
+      {
+        "color": "blue",
+        "target": "P3",
+        "run_time_s": 11.188000000000102,
+        "placement_verified": false
+      }
+    ],
+    "timing_scope": "unfold through fixed commanded placements and folded home; no vision"
+  },
+  "source": "output/competition_console/20261012_172952/events.json",
+  "within_30_seconds": false,
+  "final_pose_m_rad": [
+    -0.37865994538119274,
+    0.22409331558603693,
+    0.3938890526466092,
+    1.2092823103072932,
+    -1.209187326366253,
+    -1.209256700885013
+  ]
+}

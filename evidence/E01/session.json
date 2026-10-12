@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "calibration_type": "eye_in_hand",
+  "created_utc": "2026-09-10T03:38:41.909121+00:00",
+  "coordinate_chain": "base_T_target = base_T_tcp @ tcp_T_camera @ camera_T_target",
+  "robot": {
+    "host": "192.168.0.10",
+    "pose_source": "RTDE getActualTCPPose",
+    "tcp_must_remain_unchanged": true
+  },
+  "camera": {
+    "serial": "234222302865",
+    "width": 1280,
+    "height": 720,
+    "intrinsics": {
+      "fx": 643.107666015625,
+      "fy": 642.6383056640625,
+      "cx": 645.77490234375,
+      "cy": 360.4281311035156
+    },
+    "distortion_model": "distortion.inverse_brown_conrady",
+    "distortion_coefficients": [
+      -0.05562213808298111,
+      0.06617561727762222,
+      -0.0002852456527762115,
+      0.0004312341334298253,
+      -0.021349173039197922
+    ],
+    "normalization": "RealSense rs2_deproject_pixel_to_point at depth=1"
+  },
+  "checkerboard": {
+    "inner_columns": 9,
+    "inner_rows": 6,
+    "square_size_m": 0.02
+  },
+  "samples": [
+    "samples/sample_000.json",
+    "samples/sample_001.json",
+    "samples/sample_002.json",
+    "samples/sample_003.json",
+    "samples/sample_004.json",
+    "samples/sample_005.json",
+    "samples/sample_006.json",
+    "samples/sample_007.json",
+    "samples/sample_008.json",
+    "samples/sample_009.json",
+    "samples/sample_010.json",
+    "samples/sample_011.json",
+    "samples/sample_012.json",
+    "samples/sample_013.json",
+    "samples/sample_014.json",
+    "samples/sample_015.json",
+    "samples/sample_016.json",
+    "samples/sample_017.json",
+    "samples/sample_018.json",
+    "samples/sample_019.json",
+    "samples/sample_020.json",
+    "samples/sample_021.json",
+    "samples/sample_022.json",
+    "samples/sample_023.json",
+    "samples/sample_024.json",
+    "samples/sample_025.json",
+    "samples/sample_026.json"
+  ]
+}

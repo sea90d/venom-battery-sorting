@@ -1,0 +1,1524 @@
+{
+  "schema": "ur5-simulation",
+  "version": 1,
+  "frame": "ur_base",
+  "units": {
+    "position": "m",
+    "rotation": "rad"
+  },
+  "source": {
+    "planner": "battery_sorting.offsite",
+    "label": "Python 规划器 · 演示输入",
+    "data_kind": "demo",
+    "planner_sha256": "f6133457db93699b68e5ce6cf1d226a0f5099053a9ac84cf1e34846cc5d84c08",
+    "timing": "nominal trapezoid; angular speed and IO latency are visualization assumptions",
+    "angular_speed_rad_s": 0.5,
+    "geometry": "CAD centered 40 mm above table Z=0 unless object_centers supplied; no physics or collision solver"
+  },
+  "initial_pose": [
+    -0.046166628952218576,
+    -0.22000564307922596,
+    0.447856,
+    -0.04157768816703186,
+    -3.1341811630889373,
+    -0.00639402792769759
+  ],
+  "initial_gripper_open": false,
+  "objects": [
+    {
+      "id": "green",
+      "color": "green",
+      "center": [
+        0.11,
+        -0.26,
+        0.04
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "size_m": [
+        0.07,
+        0.08,
+        0.08
+      ]
+    },
+    {
+      "id": "blue",
+      "color": "blue",
+      "center": [
+        0.2,
+        -0.26,
+        0.04
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "size_m": [
+        0.07,
+        0.08,
+        0.08
+      ]
+    },
+    {
+      "id": "yellow",
+      "color": "yellow",
+      "center": [
+        0.11,
+        -0.36,
+        0.04
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "size_m": [
+        0.07,
+        0.08,
+        0.08
+      ]
+    },
+    {
+      "id": "red",
+      "color": "red",
+      "center": [
+        0.2,
+        -0.36,
+        0.04
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "size_m": [
+        0.07,
+        0.08,
+        0.08
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "id": "P1",
+      "pose": [
+        -0.07,
+        -0.38,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ]
+    },
+    {
+      "id": "P2",
+      "pose": [
+        -0.24,
+        -0.38,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ]
+    },
+    {
+      "id": "P3",
+      "pose": [
+        -0.155,
+        -0.2,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "label": "initialize_gripper_at_home",
+      "kind": "initialize",
+      "start_pose": [
+        -0.046166628952218576,
+        -0.22000564307922596,
+        0.447856,
+        -0.04157768816703186,
+        -3.1341811630889373,
+        -0.00639402792769759
+      ],
+      "end_pose": [
+        -0.046166628952218576,
+        -0.22000564307922596,
+        0.447856,
+        -0.04157768816703186,
+        -3.1341811630889373,
+        -0.00639402792769759
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "initial_gripper_open",
+      "kind": "open",
+      "start_pose": [
+        -0.046166628952218576,
+        -0.22000564307922596,
+        0.447856,
+        -0.04157768816703186,
+        -3.1341811630889373,
+        -0.00639402792769759
+      ],
+      "end_pose": [
+        -0.046166628952218576,
+        -0.22000564307922596,
+        0.447856,
+        -0.04157768816703186,
+        -3.1341811630889373,
+        -0.00639402792769759
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "orient_for_work",
+      "kind": "move",
+      "start_pose": [
+        -0.046166628952218576,
+        -0.22000564307922596,
+        0.447856,
+        -0.04157768816703186,
+        -3.1341811630889373,
+        -0.00639402792769759
+      ],
+      "end_pose": [
+        -0.046166628952218576,
+        -0.22000564307922596,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "transit",
+      "speed_mps": 0.05,
+      "acceleration_mps2": 0.1,
+      "duration_s": 3.1412854055435817,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "green:pick_transit",
+      "kind": "move",
+      "start_pose": [
+        -0.046166628952218576,
+        -0.22000564307922596,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "transit",
+      "speed_mps": 0.05,
+      "acceleration_mps2": 0.1,
+      "duration_s": 3.7241317953090056,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "green:pick_approach",
+      "kind": "move",
+      "start_pose": [
+        0.11,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.26,
+        0.079207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "approach",
+      "speed_mps": 0.02,
+      "acceleration_mps2": 0.1,
+      "duration_s": 18.63245,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "green:pick_contact",
+      "kind": "move",
+      "start_pose": [
+        0.11,
+        -0.26,
+        0.079207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "contact",
+      "speed_mps": 0.005,
+      "acceleration_mps2": 0.1,
+      "duration_s": 2.049999999999999,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "green:gripper_close",
+      "kind": "close",
+      "start_pose": [
+        0.11,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "green",
+      "target_id": null
+    },
+    {
+      "label": "green:grip_settle",
+      "kind": "dwell",
+      "start_pose": [
+        0.11,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.5,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "green:check_after_close",
+      "kind": "check_object",
+      "start_pose": [
+        0.11,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "green",
+      "target_id": null
+    },
+    {
+      "label": "green:pick_lift",
+      "kind": "move",
+      "start_pose": [
+        0.11,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "approach",
+      "speed_mps": 0.02,
+      "acceleration_mps2": 0.1,
+      "duration_s": 19.132449999999995,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "green:lifted_hold",
+      "kind": "dwell",
+      "start_pose": [
+        0.11,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 2.1,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "green:check_after_lift",
+      "kind": "check_object",
+      "start_pose": [
+        0.11,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "green",
+      "target_id": null
+    },
+    {
+      "label": "green:P1_transit",
+      "kind": "move",
+      "start_pose": [
+        0.11,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.07,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "transit",
+      "speed_mps": 0.05,
+      "acceleration_mps2": 0.1,
+      "duration_s": 4.826661530556787,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "green:check_before_place",
+      "kind": "check_object",
+      "start_pose": [
+        -0.07,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.07,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "green",
+      "target_id": null
+    },
+    {
+      "label": "green:P1_approach",
+      "kind": "move",
+      "start_pose": [
+        -0.07,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.07,
+        -0.38,
+        0.079207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "approach",
+      "speed_mps": 0.02,
+      "acceleration_mps2": 0.1,
+      "duration_s": 18.63245,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "green:P1_contact",
+      "kind": "move",
+      "start_pose": [
+        -0.07,
+        -0.38,
+        0.079207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.07,
+        -0.38,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "contact",
+      "speed_mps": 0.005,
+      "acceleration_mps2": 0.1,
+      "duration_s": 2.049999999999999,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "green:gripper_open",
+      "kind": "open",
+      "start_pose": [
+        -0.07,
+        -0.38,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.07,
+        -0.38,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "green",
+      "target_id": "P1"
+    },
+    {
+      "label": "green:P1_retreat",
+      "kind": "move",
+      "start_pose": [
+        -0.07,
+        -0.38,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.07,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "approach",
+      "speed_mps": 0.02,
+      "acceleration_mps2": 0.1,
+      "duration_s": 19.132449999999995,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "green:release_stability",
+      "kind": "dwell",
+      "start_pose": [
+        -0.07,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.07,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 3.1,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "blue:pick_transit",
+      "kind": "move",
+      "start_pose": [
+        -0.07,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.2,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "transit",
+      "speed_mps": 0.05,
+      "acceleration_mps2": 0.1,
+      "duration_s": 6.409314681077663,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "blue:pick_approach",
+      "kind": "move",
+      "start_pose": [
+        0.2,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.2,
+        -0.26,
+        0.079207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "approach",
+      "speed_mps": 0.02,
+      "acceleration_mps2": 0.1,
+      "duration_s": 18.63245,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "blue:pick_contact",
+      "kind": "move",
+      "start_pose": [
+        0.2,
+        -0.26,
+        0.079207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.2,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "contact",
+      "speed_mps": 0.005,
+      "acceleration_mps2": 0.1,
+      "duration_s": 2.049999999999999,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "blue:gripper_close",
+      "kind": "close",
+      "start_pose": [
+        0.2,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.2,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "blue",
+      "target_id": null
+    },
+    {
+      "label": "blue:grip_settle",
+      "kind": "dwell",
+      "start_pose": [
+        0.2,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.2,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.5,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "blue:check_after_close",
+      "kind": "check_object",
+      "start_pose": [
+        0.2,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.2,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "blue",
+      "target_id": null
+    },
+    {
+      "label": "blue:pick_lift",
+      "kind": "move",
+      "start_pose": [
+        0.2,
+        -0.26,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.2,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "approach",
+      "speed_mps": 0.02,
+      "acceleration_mps2": 0.1,
+      "duration_s": 19.132449999999995,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "blue:lifted_hold",
+      "kind": "dwell",
+      "start_pose": [
+        0.2,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.2,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 2.1,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "blue:check_after_lift",
+      "kind": "check_object",
+      "start_pose": [
+        0.2,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.2,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "blue",
+      "target_id": null
+    },
+    {
+      "label": "blue:P2_transit",
+      "kind": "move",
+      "start_pose": [
+        0.2,
+        -0.26,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.24,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "transit",
+      "speed_mps": 0.05,
+      "acceleration_mps2": 0.1,
+      "duration_s": 9.621403400793103,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "blue:check_before_place",
+      "kind": "check_object",
+      "start_pose": [
+        -0.24,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.24,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "blue",
+      "target_id": null
+    },
+    {
+      "label": "blue:P2_approach",
+      "kind": "move",
+      "start_pose": [
+        -0.24,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.24,
+        -0.38,
+        0.079207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "approach",
+      "speed_mps": 0.02,
+      "acceleration_mps2": 0.1,
+      "duration_s": 18.63245,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "blue:P2_contact",
+      "kind": "move",
+      "start_pose": [
+        -0.24,
+        -0.38,
+        0.079207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.24,
+        -0.38,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "contact",
+      "speed_mps": 0.005,
+      "acceleration_mps2": 0.1,
+      "duration_s": 2.049999999999999,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "blue:gripper_open",
+      "kind": "open",
+      "start_pose": [
+        -0.24,
+        -0.38,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.24,
+        -0.38,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "blue",
+      "target_id": "P2"
+    },
+    {
+      "label": "blue:P2_retreat",
+      "kind": "move",
+      "start_pose": [
+        -0.24,
+        -0.38,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.24,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "approach",
+      "speed_mps": 0.02,
+      "acceleration_mps2": 0.1,
+      "duration_s": 19.132449999999995,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "blue:release_stability",
+      "kind": "dwell",
+      "start_pose": [
+        -0.24,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.24,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 3.1,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "yellow:pick_transit",
+      "kind": "move",
+      "start_pose": [
+        -0.24,
+        -0.38,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.36,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "transit",
+      "speed_mps": 0.05,
+      "acceleration_mps2": 0.1,
+      "duration_s": 7.511419257183241,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "yellow:pick_approach",
+      "kind": "move",
+      "start_pose": [
+        0.11,
+        -0.36,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.36,
+        0.079207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "approach",
+      "speed_mps": 0.02,
+      "acceleration_mps2": 0.1,
+      "duration_s": 18.63245,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "yellow:pick_contact",
+      "kind": "move",
+      "start_pose": [
+        0.11,
+        -0.36,
+        0.079207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.36,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "contact",
+      "speed_mps": 0.005,
+      "acceleration_mps2": 0.1,
+      "duration_s": 2.049999999999999,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "yellow:gripper_close",
+      "kind": "close",
+      "start_pose": [
+        0.11,
+        -0.36,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.36,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "yellow",
+      "target_id": null
+    },
+    {
+      "label": "yellow:grip_settle",
+      "kind": "dwell",
+      "start_pose": [
+        0.11,
+        -0.36,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.36,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.5,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "yellow:check_after_close",
+      "kind": "check_object",
+      "start_pose": [
+        0.11,
+        -0.36,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.36,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "yellow",
+      "target_id": null
+    },
+    {
+      "label": "yellow:pick_lift",
+      "kind": "move",
+      "start_pose": [
+        0.11,
+        -0.36,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.36,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "approach",
+      "speed_mps": 0.02,
+      "acceleration_mps2": 0.1,
+      "duration_s": 19.132449999999995,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "yellow:lifted_hold",
+      "kind": "dwell",
+      "start_pose": [
+        0.11,
+        -0.36,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.36,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 2.1,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "yellow:check_after_lift",
+      "kind": "check_object",
+      "start_pose": [
+        0.11,
+        -0.36,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        0.11,
+        -0.36,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "yellow",
+      "target_id": null
+    },
+    {
+      "label": "yellow:P3_transit",
+      "kind": "move",
+      "start_pose": [
+        0.11,
+        -0.36,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.155,
+        -0.2,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "transit",
+      "speed_mps": 0.05,
+      "acceleration_mps2": 0.1,
+      "duration_s": 6.691122676865642,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "yellow:check_before_place",
+      "kind": "check_object",
+      "start_pose": [
+        -0.155,
+        -0.2,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.155,
+        -0.2,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "yellow",
+      "target_id": null
+    },
+    {
+      "label": "yellow:P3_approach",
+      "kind": "move",
+      "start_pose": [
+        -0.155,
+        -0.2,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.155,
+        -0.2,
+        0.079207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "approach",
+      "speed_mps": 0.02,
+      "acceleration_mps2": 0.1,
+      "duration_s": 18.63245,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "yellow:P3_contact",
+      "kind": "move",
+      "start_pose": [
+        -0.155,
+        -0.2,
+        0.079207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.155,
+        -0.2,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "contact",
+      "speed_mps": 0.005,
+      "acceleration_mps2": 0.1,
+      "duration_s": 2.049999999999999,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "yellow:gripper_open",
+      "kind": "open",
+      "start_pose": [
+        -0.155,
+        -0.2,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.155,
+        -0.2,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 0.0,
+      "object_id": "yellow",
+      "target_id": "P3"
+    },
+    {
+      "label": "yellow:P3_retreat",
+      "kind": "move",
+      "start_pose": [
+        -0.155,
+        -0.2,
+        0.069207,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.155,
+        -0.2,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "approach",
+      "speed_mps": 0.02,
+      "acceleration_mps2": 0.1,
+      "duration_s": 19.132449999999995,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "yellow:release_stability",
+      "kind": "dwell",
+      "start_pose": [
+        -0.155,
+        -0.2,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.155,
+        -0.2,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": null,
+      "speed_mps": null,
+      "acceleration_mps2": null,
+      "duration_s": 3.1,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "return_work_home",
+      "kind": "move",
+      "start_pose": [
+        -0.155,
+        -0.2,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.046166628952218576,
+        -0.22000564307922596,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "profile": "transit",
+      "speed_mps": 0.05,
+      "acceleration_mps2": 0.1,
+      "duration_s": 2.713136092393547,
+      "object_id": null,
+      "target_id": null
+    },
+    {
+      "label": "return_home",
+      "kind": "move",
+      "start_pose": [
+        -0.046166628952218576,
+        -0.22000564307922596,
+        0.447856,
+        -2.2448617460523574,
+        -2.1864166279658708,
+        0.00325035854435066
+      ],
+      "end_pose": [
+        -0.046166628952218576,
+        -0.22000564307922596,
+        0.447856,
+        -0.04157768816703186,
+        -3.1341811630889373,
+        -0.00639402792769759
+      ],
+      "profile": "transit",
+      "speed_mps": 0.05,
+      "acceleration_mps2": 0.1,
+      "duration_s": 3.1412854055435817,
+      "object_id": null,
+      "target_id": null
+    }
+  ]
+}

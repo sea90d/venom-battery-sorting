@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "site_config": "competition_sequence_estimate.json",
+  "grasp_config": "grasp_lift.json",
+  "vision_config": "site_t0_rgbd_20260908.json",
+  "camera_serial": "234222302865",
+  "camera_settings": {
+    "exposure": 156.0,
+    "gain": 64.0,
+    "white_balance": 4600.0
+  },
+  "active_tcp_offset_m_rad": [
+    0.0,
+    0.0,
+    0.246,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "paper_z_m": -0.017934117403323707,
+  "target_view_pose_m_rad": [
+    0.04,
+    -0.15,
+    0.447856,
+    2.2209882520372397,
+    2.2218945936749397,
+    0.0
+  ],
+  "sequence_target_view_pose_m_rad": [
+    0.0,
+    0.08,
+    0.447856,
+    2.2209882520372397,
+    2.2218945936749397,
+    0.0
+  ],
+  "pick_roi": [
+    443,
+    4,
+    383,
+    349
+  ],
+  "target_roi": [
+    770,
+    94,
+    285,
+    222
+  ],
+  "sequence_target_roi": [
+    532,
+    35,
+    451,
+    461
+  ],
+  "grasp_reference_handle_yaw_rad": 0.0,
+  "grasp_center_offset_xy_m": null,
+  "grip_position_range": [
+    120,
+    330
+  ],
+  "min_pick_separation_m": 0.07,
+  "body_size_m": [
+    0.07,
+    0.08
+  ],
+  "target_containment_margin_m": 0.002,
+  "max_observation_age_s": 90.0,
+  "max_scene_shift_m": 0.005,
+  "max_height_mad_m": 0.005,
+  "max_center_spread_m": 0.004,
+  "max_yaw_spread_deg": 5.0,
+  "frames": 3,
+  "geometry_and_gripper_verified_by_task": {
+    "basic": false,
+    "sequence": false
+  }
+}

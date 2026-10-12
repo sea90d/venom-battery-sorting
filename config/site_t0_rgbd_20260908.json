@@ -1,0 +1,114 @@
+{
+  "dry_run": true,
+  "camera": {
+    "device_id": 0,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "exposure": null,
+    "gain": null,
+    "white_balance_temperature": null,
+    "focus": null
+  },
+  "vision": {
+    "rois": [
+      {
+        "slot_name": "slot1",
+        "x": 315,
+        "y": 250,
+        "width": 99,
+        "height": 122,
+        "expected_center_x": 370.0,
+        "expected_center_y": 312.0,
+        "max_centroid_offset_px": 45.0,
+        "expected_component_area_px": null,
+        "expected_long_axis_angle_deg": null,
+        "area_tolerance_fraction": 0.3,
+        "max_angle_error_deg": 5.0
+      },
+      {
+        "slot_name": "slot2",
+        "x": 414,
+        "y": 250,
+        "width": 100,
+        "height": 122,
+        "expected_center_x": 460.0,
+        "expected_center_y": 312.0,
+        "max_centroid_offset_px": 45.0,
+        "expected_component_area_px": null,
+        "expected_long_axis_angle_deg": null,
+        "area_tolerance_fraction": 0.3,
+        "max_angle_error_deg": 5.0
+      },
+      {
+        "slot_name": "slot3",
+        "x": 315,
+        "y": 372,
+        "width": 99,
+        "height": 115,
+        "expected_center_x": 370.0,
+        "expected_center_y": 429.0,
+        "max_centroid_offset_px": 45.0,
+        "expected_component_area_px": null,
+        "expected_long_axis_angle_deg": null,
+        "area_tolerance_fraction": 0.3,
+        "max_angle_error_deg": 5.0
+      },
+      {
+        "slot_name": "slot4",
+        "x": 414,
+        "y": 372,
+        "width": 100,
+        "height": 115,
+        "expected_center_x": 460.0,
+        "expected_center_y": 429.0,
+        "max_centroid_offset_px": 45.0,
+        "expected_component_area_px": null,
+        "expected_long_axis_angle_deg": null,
+        "area_tolerance_fraction": 0.3,
+        "max_angle_error_deg": 5.0
+      }
+    ],
+    "homography": {
+      "pixel_points": [],
+      "robot_xy_points_m": [],
+      "calibrated": false,
+      "max_reprojection_error_m": 0.002
+    },
+    "colors": [
+      {
+        "name": "red",
+        "ranges": [
+          {"h_min": 0, "h_max": 10, "s_min": 80, "s_max": 255, "v_min": 60, "v_max": 255},
+          {"h_min": 170, "h_max": 179, "s_min": 80, "s_max": 255, "v_min": 60, "v_max": 255}
+        ]
+      },
+      {
+        "name": "blue",
+        "ranges": [
+          {"h_min": 90, "h_max": 130, "s_min": 70, "s_max": 255, "v_min": 50, "v_max": 255}
+        ]
+      },
+      {
+        "name": "yellow",
+        "ranges": [
+          {"h_min": 11, "h_max": 30, "s_min": 80, "s_max": 255, "v_min": 60, "v_max": 255}
+        ]
+      },
+      {
+        "name": "green",
+        "ranges": [
+          {"h_min": 31, "h_max": 85, "s_min": 60, "s_max": 255, "v_min": 50, "v_max": 255}
+        ]
+      }
+    ],
+    "min_coverage": 0.08,
+    "min_confidence": 0.75,
+    "min_margin": 0.25,
+    "morph_kernel_size": 5,
+    "morph_iterations": 1,
+    "sample_frames": 5,
+    "required_consistent_frames": 3,
+    "calibrated": false
+  }
+}

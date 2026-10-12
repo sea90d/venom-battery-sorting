@@ -1,0 +1,493 @@
+{
+  "timestamp_utc": "2026-10-11T14:17:46.775722+00:00",
+  "mode": "smooth_t0_v7_folded_standby",
+  "executed": true,
+  "completed": true,
+  "profile_live_verified": false,
+  "selected_profile": "trajectory-check",
+  "start_pose_m_rad": [
+    -0.4786553323113515,
+    0.2241376643848198,
+    0.39387836383401104,
+    1.2091995761561456,
+    -1.2091995761561456,
+    -1.2091995761561456
+  ],
+  "start_constraints": {
+    "zone_distance_m": 0.13513766438481975,
+    "tool_envelope_margin_m": 0.035137664384819745,
+    "parallel_tilt_deg": 2.5444437451708134e-14
+  },
+  "motion_profile": {
+    "open_position": 400,
+    "pick_open_position": 1000,
+    "transit_speed_mps": 0.05,
+    "contact_speed_mps": 0.04,
+    "acceleration_mps2": 0.1,
+    "contact_acceleration_mps2": 0.1,
+    "stop_deceleration_mps2": 0.2,
+    "blend_radius_m": 0.004,
+    "transfer_z_m": 0.21920699999999999
+  },
+  "events": [
+    {
+      "event": "joint_path_checked",
+      "utc": "2026-10-11T14:17:51.005311+00:00",
+      "program_elapsed_s": 4.234000000004016,
+      "label": "return_folded_standby",
+      "q_start_rad": [
+        -0.01827699342836553,
+        -1.5550497213946741,
+        1.472738265991211,
+        -1.4865778128253382,
+        -1.5832966009723108,
+        -1.5256508032428187
+      ],
+      "q_end_rad": [
+        -1.4090692400554312,
+        -1.906247925156082,
+        1.9146584906001545,
+        0.06296698619652918,
+        0.16315055529803835,
+        -0.07237040896641922
+      ],
+      "swept_clearance_lower_bound_m": 0.010113015380374853,
+      "extra_sweep_checks": 1023,
+      "model": "nominal UR5 / full 246 mm tool, radius 75 mm",
+      "lowest_tool_axis_z_m": 0.20755925415272372
+    },
+    {
+      "event": "joint_move",
+      "utc": "2026-10-11T14:18:03.331996+00:00",
+      "program_elapsed_s": 16.562000000005355,
+      "label": "return_folded_standby",
+      "pose": [
+        -0.4786553323113515,
+        0.2241376643848198,
+        0.39387836383401104,
+        1.2091995761561456,
+        -1.2091995761561456,
+        -1.2091995761561456
+      ],
+      "joints_rad": [
+        -1.4090692400554312,
+        -1.906247925156082,
+        1.9146584906001545,
+        0.06296698619652918,
+        0.16315055529803835,
+        -0.07237040896641922
+      ],
+      "speed_rad_s": 0.15,
+      "acceleration_rad_s2": 0.3
+    },
+    {
+      "event": "startup_home_complete",
+      "utc": "2026-10-11T14:18:03.333002+00:00",
+      "program_elapsed_s": 16.562000000005355,
+      "pose": [
+        -0.4786969819103132,
+        0.22410415330890734,
+        0.3939057496583781,
+        1.2094477837954414,
+        -1.208909547343413,
+        -1.2091637427371404
+      ]
+    },
+    {
+      "event": "pick_full_open",
+      "utc": "2026-10-11T14:18:07.140336+00:00",
+      "program_elapsed_s": 20.359000000004016,
+      "position": 1000,
+      "required": 1000
+    },
+    {
+      "event": "competition_start_checked",
+      "utc": "2026-10-11T14:18:07.142879+00:00",
+      "program_elapsed_s": 20.359000000004016,
+      "zone_distance_m": 0.1351382587502153,
+      "tool_envelope_margin_m": 0.035138258750215284,
+      "parallel_tilt_deg": 6.59124451820132e-05
+    },
+    {
+      "event": "prepared_waiting_for_start",
+      "utc": "2026-10-11T14:18:07.144156+00:00",
+      "program_elapsed_s": 20.375
+    },
+    {
+      "event": "start_trigger",
+      "utc": "2026-10-11T14:18:09.354607+00:00",
+      "program_elapsed_s": 22.57800000000134
+    },
+    {
+      "event": "cycle_started",
+      "utc": "2026-10-11T14:18:10.655190+00:00",
+      "program_elapsed_s": 23.875,
+      "profile": {
+        "speed": 0.05,
+        "acceleration": 0.1,
+        "stop_deceleration": 0.2,
+        "controller_profile": "standard"
+      }
+    },
+    {
+      "event": "joint_path_checked",
+      "utc": "2026-10-11T14:18:11.374134+00:00",
+      "program_elapsed_s": 24.5940000000046,
+      "label": "unfold_to_observation",
+      "q_start_rad": [
+        -1.409114185963766,
+        -1.906287972127096,
+        1.9147601127624512,
+        0.0629115104675293,
+        0.16322365403175354,
+        -0.07235509554018194
+      ],
+      "q_end_rad": [
+        -0.9562153710368406,
+        -1.8085743538129746,
+        1.038124638411837,
+        -0.7984544681606582,
+        -1.580181556172633,
+        -0.944561032646547
+      ],
+      "swept_clearance_lower_bound_m": 0.016605914757394414,
+      "extra_sweep_checks": 1023,
+      "model": "nominal UR5 / full 246 mm tool, radius 75 mm",
+      "lowest_tool_axis_z_m": 0.3889279595941221
+    },
+    {
+      "event": "joint_move",
+      "utc": "2026-10-11T14:18:23.677457+00:00",
+      "program_elapsed_s": 36.90600000000268,
+      "label": "unfold_to_observation",
+      "pose": [
+        -0.25,
+        0.16,
+        0.447856,
+        2.2209882520372397,
+        2.2218945936749397,
+        0.0
+      ],
+      "joints_rad": [
+        -0.9562153710368406,
+        -1.8085743538129746,
+        1.038124638411837,
+        -0.7984544681606582,
+        -1.580181556172633,
+        -0.944561032646547
+      ],
+      "speed_rad_s": 0.15,
+      "acceleration_rad_s2": 0.3
+    },
+    {
+      "event": "initial_frame_rejected",
+      "utc": "2026-10-11T14:18:26.902194+00:00",
+      "program_elapsed_s": 40.125,
+      "attempt": 2,
+      "error": "Ambiguous handle support: red"
+    },
+    {
+      "event": "initial_frame_rejected",
+      "utc": "2026-10-11T14:18:27.511984+00:00",
+      "program_elapsed_s": 40.734000000004016,
+      "attempt": 3,
+      "error": "Ambiguous handle support: red"
+    },
+    {
+      "event": "initial_window_rejected",
+      "utc": "2026-10-11T14:18:28.950650+00:00",
+      "program_elapsed_s": 42.17200000000594,
+      "attempt": 5,
+      "error": "Red handle unstable: center=6.084mm/2mm, angle=1.524deg/5deg"
+    },
+    {
+      "event": "initial_frame_rejected",
+      "utc": "2026-10-11T14:18:29.341556+00:00",
+      "program_elapsed_s": 42.562000000005355,
+      "attempt": 6,
+      "error": "Ambiguous handle support: red"
+    },
+    {
+      "event": "initial_window_rejected",
+      "utc": "2026-10-11T14:18:30.164391+00:00",
+      "program_elapsed_s": 43.39100000000326,
+      "attempt": 7,
+      "error": "Red handle unstable: center=6.035mm/2mm, angle=0.661deg/5deg"
+    },
+    {
+      "event": "initial_frame_rejected",
+      "utc": "2026-10-11T14:18:30.536736+00:00",
+      "program_elapsed_s": 43.76600000000326,
+      "attempt": 8,
+      "error": "Invalid body/handle geometry: red"
+    },
+    {
+      "event": "initial_consensus",
+      "utc": "2026-10-11T14:18:31.368930+00:00",
+      "program_elapsed_s": 44.5940000000046,
+      "attempts": 9,
+      "accepted_frames": 3
+    },
+    {
+      "event": "vision_pass",
+      "utc": "2026-10-11T14:18:31.370938+00:00",
+      "program_elapsed_s": 44.5940000000046,
+      "pick_xy_m": [
+        -0.49527987837791443,
+        -0.10215342044830322
+      ],
+      "target_xy_m": [
+        -0.44398324686600754,
+        0.2224553793253708
+      ],
+      "place_tcp_xy_m": [
+        -0.4454845686586101,
+        0.2229610651316452
+      ],
+      "nearest_m": 0.07836512970852953
+    },
+    {
+      "event": "move",
+      "utc": "2026-10-11T14:18:31.544780+00:00",
+      "program_elapsed_s": 44.76600000000326,
+      "label": "normalize_high_z",
+      "pose": [
+        -0.2500218440518514,
+        0.15999897701691906,
+        0.447856,
+        -2.2208681388835427,
+        -2.2219606726931884,
+        5.3643334958274226e-05
+      ],
+      "speed": 0.04,
+      "acceleration": 0.1
+    },
+    {
+      "event": "move",
+      "utc": "2026-10-11T14:18:41.530790+00:00",
+      "program_elapsed_s": 54.75,
+      "label": "home_to_red_hover",
+      "pose": [
+        -0.49527987837791443,
+        -0.10215342044830322,
+        0.21920699999999999,
+        3.1414495706700567,
+        -0.029983262435456525,
+        -0.0
+      ],
+      "speed": 0.05,
+      "acceleration": 0.1,
+      "minimum_clearance_z_m": 0.21920699999999999
+    },
+    {
+      "event": "smooth_path",
+      "utc": "2026-10-11T14:18:45.945586+00:00",
+      "program_elapsed_s": 59.17200000000594,
+      "label": "red_pick",
+      "poses": [
+        [
+          -0.49527987837791443,
+          -0.10215342044830322,
+          0.079207,
+          3.1414495706700567,
+          -0.029983262435456525,
+          -0.0
+        ],
+        [
+          -0.49527987837791443,
+          -0.10215342044830322,
+          0.069207,
+          3.1414495706700567,
+          -0.029983262435456525,
+          -0.0
+        ]
+      ],
+      "speeds": [
+        0.05,
+        0.04
+      ],
+      "accelerations": [
+        0.1,
+        0.1
+      ],
+      "blend_m": 0.004
+    },
+    {
+      "event": "grasped",
+      "utc": "2026-10-11T14:18:46.840190+00:00",
+      "program_elapsed_s": 60.062000000005355,
+      "position": 236
+    },
+    {
+      "event": "move",
+      "utc": "2026-10-11T14:18:50.709469+00:00",
+      "program_elapsed_s": 63.937000000005355,
+      "label": "red_lift",
+      "pose": [
+        -0.49527987837791443,
+        -0.10215342044830322,
+        0.21920699999999999,
+        3.1414495706700567,
+        -0.029983262435456525,
+        -0.0
+      ],
+      "speed": 0.05,
+      "acceleration": 0.1
+    },
+    {
+      "event": "lifted_hold_complete",
+      "utc": "2026-10-11T14:18:50.741300+00:00",
+      "program_elapsed_s": 63.9690000000046,
+      "duration_s": 0.0
+    },
+    {
+      "event": "move",
+      "utc": "2026-10-11T14:18:58.334951+00:00",
+      "program_elapsed_s": 71.56200000000536,
+      "label": "red_to_t0",
+      "pose": [
+        -0.4454845686586101,
+        0.2229610651316452,
+        0.21920699999999999,
+        3.1414495706700567,
+        -0.029983262435456525,
+        -0.0
+      ],
+      "speed": 0.05,
+      "acceleration": 0.1
+    },
+    {
+      "event": "smooth_path",
+      "utc": "2026-10-11T14:19:03.115303+00:00",
+      "program_elapsed_s": 76.3440000000046,
+      "label": "red_place",
+      "poses": [
+        [
+          -0.4454845686586101,
+          0.2229610651316452,
+          0.079207,
+          3.1414495706700567,
+          -0.029983262435456525,
+          -0.0
+        ],
+        [
+          -0.4454845686586101,
+          0.2229610651316452,
+          0.069207,
+          3.1414495706700567,
+          -0.029983262435456525,
+          -0.0
+        ]
+      ],
+      "speeds": [
+        0.05,
+        0.04
+      ],
+      "accelerations": [
+        0.1,
+        0.1
+      ],
+      "blend_m": 0.004
+    },
+    {
+      "event": "released",
+      "utc": "2026-10-11T14:19:03.466608+00:00",
+      "program_elapsed_s": 76.68700000000536,
+      "position": 400
+    },
+    {
+      "event": "move",
+      "utc": "2026-10-11T14:19:13.426282+00:00",
+      "program_elapsed_s": 86.65600000000268,
+      "label": "direct_return_home",
+      "pose": [
+        -0.25,
+        0.16,
+        0.447856,
+        2.2209882520372397,
+        2.2218945936749397,
+        0.0
+      ],
+      "speed": 0.05,
+      "acceleration": 0.1
+    },
+    {
+      "event": "joint_path_checked",
+      "utc": "2026-10-11T14:19:15.185409+00:00",
+      "program_elapsed_s": 88.40600000000268,
+      "label": "return_folded_standby",
+      "q_start_rad": [
+        -0.9562323729144495,
+        -1.8086260000811976,
+        1.038217544555664,
+        -0.7985165754901331,
+        -1.5801294485675257,
+        -0.9445183912860315
+      ],
+      "q_end_rad": [
+        -1.4090692400554312,
+        -1.906247925156082,
+        1.9146584906001545,
+        0.06296698619652918,
+        0.16315055529803835,
+        -0.07237040896641922
+      ],
+      "swept_clearance_lower_bound_m": 0.01660723879674686,
+      "extra_sweep_checks": 1023,
+      "model": "nominal UR5 / full 246 mm tool, radius 75 mm",
+      "lowest_tool_axis_z_m": 0.3889596838874352
+    },
+    {
+      "event": "joint_move",
+      "utc": "2026-10-11T14:19:27.503648+00:00",
+      "program_elapsed_s": 100.73400000000402,
+      "label": "return_folded_standby",
+      "pose": [
+        -0.4786553323113515,
+        0.2241376643848198,
+        0.39387836383401104,
+        1.2091995761561456,
+        -1.2091995761561456,
+        -1.2091995761561456
+      ],
+      "joints_rad": [
+        -1.4090692400554312,
+        -1.906247925156082,
+        1.9146584906001545,
+        0.06296698619652918,
+        0.16315055529803835,
+        -0.07237040896641922
+      ],
+      "speed_rad_s": 0.15,
+      "acceleration_rad_s2": 0.3
+    },
+    {
+      "event": "home_arrived",
+      "utc": "2026-10-11T14:19:27.504989+00:00",
+      "program_elapsed_s": 100.73400000000402,
+      "motion_to_home_s": 76.85900000000402
+    }
+  ],
+  "startup_home_executed": true,
+  "verification": {
+    "center_error_m": 0.008224967427461803,
+    "min_corner_margin_m": 0.0038499978549654066
+  },
+  "timing": {
+    "motion_to_home_s": 76.85900000000402,
+    "motion_and_stability_s": 76.85900000000402,
+    "release_stable_s": 24.06199999999808,
+    "preparation_to_cycle_s": 23.875,
+    "trigger_to_home_s": 78.15600000000268,
+    "program_to_complete_s": 100.73400000000402,
+    "trigger_to_complete_s": 78.15600000000268
+  },
+  "final_pose": [
+    -0.4786939242859802,
+    0.22404391911258356,
+    0.3939392877020915,
+    1.2096053457007931,
+    -1.2087374214151068,
+    -1.20927576212729
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "battery_zone_bounds_base_xy_m": [
+    -0.593,
+    -0.339,
+    -0.219,
+    0.089
+  ],
+  "tool_footprint_radius_m": 0.1,
+  "outside_margin_m": 0.02,
+  "max_parallel_tilt_deg": 0.25,
+  "source": "Oct11 initial_2 RGB-D: printed outline pixel corners (287,115),(571,126),(563,355),(279,345), projected onto calibrated paper plane, padded 5 mm",
+  "parallel_definition": "Tool +Z horizontal Base -X at explicit folded joints; unfold arm and wrist together after start",
+  "live_verified": false,
+  "tool_axis_to_flange_m": 0.246
+}

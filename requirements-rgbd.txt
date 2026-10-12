@@ -1,0 +1,3 @@
+-r requirements.txt
+# 可选：Intel RealSense D455 RGB-D 支持（Windows/Python 3.12 已实测）
+pyrealsense2==2.58.4.10922; sys_platform == "win32"

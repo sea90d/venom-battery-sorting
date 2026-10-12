@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+tmp/
+.env
+.env.*
+*.log
+output/**
+!output/handeye/
+!output/handeye/session_20260910/
+!output/handeye/session_20260910/handeye_result.json
+!output/competition_console/
+!output/competition_console/20261012_172952/
+!output/competition_console/20261012_172952/events.json
+!output/competition_console/20261012_172952/summary.json

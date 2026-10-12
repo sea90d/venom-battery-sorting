@@ -1,0 +1,2 @@
+# Optional dependency for the read-only DH Modbus feedback probe.
+pyserial==3.5

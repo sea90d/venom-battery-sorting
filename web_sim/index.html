@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UR5 电池抓取全流程仿真</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">MEITUAN ROBOTICS · OFFLINE SIMULATION</p>
+          <h1>UR5 电池抓取与放置仿真</h1>
+          <p class="subtitle">Python 导出计划 → 导入 → TCP 六维轨迹与抓放回放。</p>
+        </div>
+        <div class="status-cluster">
+          <span class="status-dot"></span>
+          <span>纯浏览器演示 · 不连接硬件</span>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <div class="viewport-panel">
+          <div id="viewport" class="viewport"></div>
+          <div class="view-buttons"><button id="frontView" class="button">正面视角</button><button id="topView" class="button">俯视底图</button></div>
+          <div class="viewport-overlay top-left">
+            <span class="overlay-label">SCENE</span>
+            <span id="sceneModeLabel">基础任务 · 绿色 → T0</span>
+          </div>
+          <div class="viewport-overlay bottom-left">
+            <span class="legend-item"><i class="legend-swatch robot"></i>UR5 / 夹爪</span>
+            <span class="legend-item"><i class="legend-swatch trajectory"></i>TCP 轨迹</span>
+            <span class="legend-item"><i class="legend-swatch target"></i>目标区</span>
+          </div>
+          <div id="loading" class="loading">正在建立 3D 场景…</div>
+        </div>
+
+        <aside class="control-panel">
+          <section class="card import-card">
+            <div class="card-heading"><span>Python 计划</span><span id="planKind" class="demo-badge">未加载</span></div>
+            <label class="field-label" for="planFile">导入计划 JSON（本地读取）</label>
+            <input id="planFile" type="file" accept=".json,application/json" />
+            <button id="loadRecorded" class="button">载入现场绿色抓取计划</button>
+            <button id="loadAcceleratedRed" class="button button-primary">载入新提速方案仿真</button>
+            <button id="loadCollision" class="button button-primary">载入折叠→展开→抓放→折回仿真</button>
+            <button id="loadRecordedRed" class="button">载入历史红色 T0 运行</button>
+            <p id="planStatus" role="status" class="data-note">正在加载 Python 示例…</p>
+            <details><summary>粘贴 JSON 计划</summary><textarea id="planText" aria-label="计划 JSON" placeholder="粘贴 Python 导出的 JSON"></textarea><button id="importText" class="button">导入粘贴内容</button></details>
+          </section>
+          <section class="card task-card">
+            <div class="card-heading">
+              <span>Python 生成的示例</span>
+              <span id="stepCounter" class="mono">1 / 1</span>
+            </div>
+            <label class="field-label" for="taskMode">任务模式</label>
+            <select id="taskMode" class="select-control">
+              <option value="basic">基础任务：指定颜色 → T0</option>
+              <option value="sequence">序列任务：三块 → P1 / P2 / P3</option>
+            </select>
+            <div id="basicColorField">
+              <label class="field-label" for="basicColor">电池颜色</label>
+              <select id="basicColor" class="select-control">
+                <option value="green">绿色</option>
+                <option value="red">红色</option>
+                <option value="yellow">黄色</option>
+                <option value="blue">蓝色</option>
+              </select>
+            </div>
+            <div id="sequenceColorField" class="hidden">
+              <label class="field-label" for="sequenceOrder">序列顺序</label>
+              <select id="sequenceOrder" class="select-control">
+                <option value="blue,red,yellow">蓝 → 红 → 黄</option>
+                <option value="red,yellow,blue">红 → 黄 → 蓝</option>
+                <option value="yellow,blue,red">黄 → 蓝 → 红</option>
+              </select>
+            </div>
+            <button id="rebuildButton" class="button button-primary">载入所选 Python 示例</button>
+          </section>
+
+          <section class="card playback-card">
+            <div class="card-heading"><span>播放控制</span><span id="phaseLabel" class="phase-badge">READY</span></div>
+            <div class="playback-buttons">
+              <button id="playButton" class="button button-primary" disabled>▶ 播放</button>
+              <button id="pauseButton" class="button button-muted">Ⅱ 暂停</button>
+              <button id="stepButton" class="button button-muted">单步</button>
+              <button id="resetButton" class="button button-muted">↺ 重置</button>
+            </div>
+            <label class="field-label" for="timeline">时间轴</label>
+            <input id="timeline" class="timeline" type="range" min="0" max="1" step="0.001" value="0" />
+            <div class="timeline-meta"><span id="timeLabel">0.0 s</span><span id="durationLabel">0.0 s</span></div>
+            <div class="speed-row">
+              <span class="field-label">速度</span>
+              <div class="speed-buttons" id="speedButtons">
+                <button data-speed="0.25">0.25×</button>
+                <button data-speed="0.5">0.5×</button>
+                <button data-speed="1" class="active">1×</button>
+                <button data-speed="2">2×</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="card telemetry-card">
+            <div class="card-heading"><span>实时状态</span><span id="gripperState" class="state-chip open">OPEN</span></div>
+            <div class="telemetry-grid">
+              <div><span class="metric-label">当前步骤</span><strong id="currentAction">等待开始</strong></div>
+              <div><span class="metric-label">阶段</span><strong id="currentPhase">准备</strong></div>
+              <div><span class="metric-label">TCP X</span><strong id="tcpX">—</strong></div>
+              <div><span class="metric-label">TCP Y</span><strong id="tcpY">—</strong></div>
+              <div><span class="metric-label">TCP Z</span><strong id="tcpZ">—</strong></div>
+              <div><span class="metric-label">TCP 旋转向量 Rx / Ry / Rz</span><strong id="toolRoll">—</strong></div>
+            </div>
+            <div class="object-feedback"><span>物体反馈</span><strong id="objectFeedback">未持物</strong></div>
+            <p id="collisionState" role="status" class="data-note">尚未载入实体碰撞模型</p>
+          </section>
+
+          <section class="card data-card">
+            <div class="card-heading"><span>计划来源</span></div>
+            <dl class="data-list">
+              <div><dt>规划器</dt><dd id="plannerName">—</dd></div>
+              <div><dt>MOVE 路点</dt><dd id="poseCount">—</dd></div>
+              <div><dt id="planHashLabel">规划器版本摘要</dt><dd id="planHash">—</dd></div>
+            </dl>
+            <p id="modelStatus" class="data-note">正在加载原始 CAD 模型…</p>
+            <p id="timingNote" class="data-note">位置和旋转读取自导入计划；时间为速度/加速度估算，夹爪和检查事件假设成功。</p>
+          </section>
+        </aside>
+      </section>
+
+      <section class="lower-grid">
+        <section class="card timeline-card">
+          <div class="card-heading"><span>动作序列</span><span class="muted">点击步骤可定位时间轴</span></div>
+          <div id="stepList" class="step-list"></div>
+        </section>
+        <section class="card notes-card">
+          <div class="card-heading"><span>仿真说明</span><span class="muted">当前为离线模型</span></div>
+          <div class="note-line"><span class="note-icon">1</span><p>浏览器只播放 Python 导出的动作和路点，不再自行规划。修改 Python 后重新导出并导入，即可检查新流程。</p></div>
+          <div class="note-line"><span class="note-icon">2</span><p>夹爪实体碰撞计划回放离线完整姿态逆解的关节轨迹，检查法兰至 TCP 全长夹爪与机器人实体包络。仅允许安装面连接；尺寸与运动学仍为名义模型，未验证实机。其他计划的关节仅为位置逆解示意。</p></div>
+          <div class="note-line"><span class="note-icon">3</span><p>示例由真实规划器配合演示输入生成。正式计划不会自动填补缺失坐标；旋转用最短路径插值，名义时长不代表真机耗时。</p></div>
+        </section>
+      </section>
+    </main>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "completed": true,
+  "task": "sequence",
+  "colors": [
+    "yellow",
+    "green",
+    "blue"
+  ],
+  "timing": {
+    "task_run_time_s": 298.2659999999996,
+    "battery_run_times": [
+      {
+        "color": "yellow",
+        "target": "P1",
+        "run_time_s": 91.85899999999947,
+        "placement_verified": false
+      },
+      {
+        "color": "green",
+        "target": "P2",
+        "run_time_s": 93.625,
+        "placement_verified": false
+      },
+      {
+        "color": "blue",
+        "target": "P3",
+        "run_time_s": 92.1869999999999,
+        "placement_verified": false
+      }
+    ],
+    "timing_scope": "first observation motion through fresh vision, commanded placements and home; placement verification skipped"
+  },
+  "placement_verified": false,
+  "final_pose_m_rad": [
+    -0.3786345874108098,
+    0.22416971860081414,
+    0.39388663690453757,
+    1.2094188328674573,
+    -1.209157074299919,
+    -1.2094168805091436
+  ]
+}

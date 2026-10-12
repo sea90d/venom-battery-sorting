@@ -1,0 +1,159 @@
+{
+  "dry_run": true,
+  "camera": {
+    "device_id": 0,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "exposure": null,
+    "gain": null,
+    "white_balance_temperature": null,
+    "focus": null
+  },
+  "vision": {
+    "rois": [
+      {
+        "slot_name": "slot1",
+        "x": 100,
+        "y": 100,
+        "width": 180,
+        "height": 120,
+        "expected_center_x": 190.0,
+        "expected_center_y": 160.0,
+        "max_centroid_offset_px": 30.0,
+        "expected_component_area_px": null,
+        "expected_long_axis_angle_deg": null,
+        "area_tolerance_fraction": 0.3,
+        "max_angle_error_deg": 5.0
+      },
+      {
+        "slot_name": "slot2",
+        "x": 320,
+        "y": 100,
+        "width": 180,
+        "height": 120,
+        "expected_center_x": 410.0,
+        "expected_center_y": 160.0,
+        "max_centroid_offset_px": 30.0,
+        "expected_component_area_px": null,
+        "expected_long_axis_angle_deg": null,
+        "area_tolerance_fraction": 0.3,
+        "max_angle_error_deg": 5.0
+      },
+      {
+        "slot_name": "slot3",
+        "x": 100,
+        "y": 260,
+        "width": 180,
+        "height": 120,
+        "expected_center_x": 190.0,
+        "expected_center_y": 320.0,
+        "max_centroid_offset_px": 30.0,
+        "expected_component_area_px": null,
+        "expected_long_axis_angle_deg": null,
+        "area_tolerance_fraction": 0.3,
+        "max_angle_error_deg": 5.0
+      },
+      {
+        "slot_name": "slot4",
+        "x": 320,
+        "y": 260,
+        "width": 180,
+        "height": 120,
+        "expected_center_x": 410.0,
+        "expected_center_y": 320.0,
+        "max_centroid_offset_px": 30.0,
+        "expected_component_area_px": null,
+        "expected_long_axis_angle_deg": null,
+        "area_tolerance_fraction": 0.3,
+        "max_angle_error_deg": 5.0
+      }
+    ],
+    "homography": {
+      "pixel_points": [],
+      "robot_xy_points_m": [],
+      "calibrated": false,
+      "max_reprojection_error_m": 0.002
+    },
+    "colors": [
+      {
+        "name": "red",
+        "ranges": [
+          {"h_min": 0, "h_max": 10, "s_min": 80, "s_max": 255, "v_min": 60, "v_max": 255},
+          {"h_min": 170, "h_max": 179, "s_min": 80, "s_max": 255, "v_min": 60, "v_max": 255}
+        ]
+      },
+      {
+        "name": "blue",
+        "ranges": [
+          {"h_min": 90, "h_max": 130, "s_min": 70, "s_max": 255, "v_min": 50, "v_max": 255}
+        ]
+      },
+      {
+        "name": "yellow",
+        "ranges": [
+          {"h_min": 20, "h_max": 35, "s_min": 80, "s_max": 255, "v_min": 60, "v_max": 255}
+        ]
+      },
+      {
+        "name": "green",
+        "ranges": [
+          {"h_min": 40, "h_max": 85, "s_min": 60, "s_max": 255, "v_min": 50, "v_max": 255}
+        ]
+      }
+    ],
+    "min_coverage": 0.1,
+    "min_confidence": 0.75,
+    "min_margin": 0.25,
+    "morph_kernel_size": 5,
+    "morph_iterations": 1,
+    "sample_frames": 5,
+    "required_consistent_frames": 4,
+    "calibrated": false
+  },
+  "robot": {
+    "host": "192.168.0.10",
+    "dashboard_port": 29999,
+    "rtde_port": 30004,
+    "tcp_calibrated": false,
+    "payload_calibrated": false,
+    "base_z_up_confirmed": false,
+    "safe_z_approach": 0.0,
+    "safe_z_transit": 0.0,
+    "min_approach_clearance": 0.03,
+    "min_transit_clearance": 0.05,
+    "max_orientation_delta": 0.0872664626,
+    "home_translation_tolerance": 0.001,
+    "home_rotation_tolerance": 0.0087266463,
+    "segment_start_translation_tolerance": 0.0002,
+    "segment_start_rotation_tolerance": 0.0017453293,
+    "min_contact_xy_separation": 0.01,
+    "workspace_bounds": null,
+    "pick_xy_bounds": null,
+    "pick_pose_template": null,
+    "max_horizontal_segment_m": 0.75,
+    "max_vertical_segment_m": 0.25,
+    "transit_speed": 0.05,
+    "approach_speed": 0.02,
+    "contact_speed": 0.005,
+    "move_acceleration": 0.1,
+    "stop_deceleration": 0.5,
+    "max_stop_distance_m": 0.005,
+    "move_timeout": 20.0,
+    "monitor_rate": 50.0,
+    "max_tcp_force_delta_n": 20.0,
+    "grip_settle_seconds": 0.5,
+    "lifted_hold_seconds": 2.1,
+    "release_settle_seconds": 3.1,
+    "taught_poses": {
+      "home": null,
+      "T0": null,
+      "P1": null,
+      "P2": null,
+      "P3": null
+    }
+  },
+  "gripper": {
+    "driver": "not_configured"
+  }
+}
